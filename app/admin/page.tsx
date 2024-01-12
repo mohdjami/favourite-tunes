@@ -30,6 +30,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Song } from "@/types";
+import { useRouter } from "next/navigation";
 // const session = await getServerSession(authOptions);
 
 const FormSchema = z.object({
@@ -39,6 +40,7 @@ const FormSchema = z.object({
 
 export default function Admin() {
   const [songs, setSongs] = useState<Song[]>([]);
+  const router = useRouter();
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -77,19 +79,24 @@ export default function Admin() {
   const { data: session } = useSession();
 
   const onSubmit = async (values: z.infer<typeof FormSchema>) => {
-    console.log(values);
-    const res = await fetch(`${process.env.NEXT_PUBLIC_APP_URL}/api/songs`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        title: values.title,
-        artist: values.artistName,
-      }),
-    });
-    const data = await res.json();
-    console.log(data);
+    try {
+      console.log(values);
+      const res = await fetch(`${process.env.NEXT_PUBLIC_APP_URL}/api/songs`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          title: values.title,
+          artist: values.artistName,
+        }),
+      });
+      router.refresh();
+      const data = await res.json();
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
   };
   if (session?.user.role === "normal" || !session) {
     return (
