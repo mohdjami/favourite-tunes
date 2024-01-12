@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 
 export default function Signin() {
   return (
-    <main className="container flex h-screen flex-col items-center justify-center  sm:p-10  sm:mt-10">
+    <main className="container flex  flex-col items-center justify-center  sm:p-10  sm:mt-10">
       <Container>
         <div className="flex justify-center">
           <Card className="w-[450px] space-y-8">
