@@ -40,12 +40,20 @@ const Navbar = async () => {
                       Music
                     </Link>
                   ) : (
-                    <Link
-                      className="text-sm font-medium hover:underline underline-offset-4 text-[#2f3542]"
-                      href="/admin"
-                    >
-                      Admin Panel
-                    </Link>
+                    <>
+                      <Link
+                        className="text-sm font-medium hover:underline underline-offset-4 text-[#2f3542]"
+                        href="/music"
+                      >
+                        Music
+                      </Link>
+                      <Link
+                        className="text-sm font-medium hover:underline underline-offset-4 text-[#2f3542]"
+                        href="/admin"
+                      >
+                        Admin Panel
+                      </Link>
+                    </>
                   )}
                 </nav>
               ) : (
