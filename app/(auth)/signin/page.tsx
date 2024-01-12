@@ -46,11 +46,6 @@ export default function Signin() {
         >
           Sign up
         </Link>
-        <Link href="/" className={cn(buttonVariants({ variant: "ghost" }))}>
-          <>
-            <Icons.back className="mr-2 h-4 w-4" /> Back
-          </>
-        </Link>
       </p>
     </main>
   );
