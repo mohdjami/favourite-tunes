@@ -31,6 +31,7 @@ import {
 } from "@/components/ui/form";
 import { Song } from "@/types";
 import { useRouter } from "next/navigation";
+import { Card, CardHeader, CardTitle } from "@/components/ui/card";
 // const session = await getServerSession(authOptions);
 
 const FormSchema = z.object({
@@ -40,14 +41,6 @@ const FormSchema = z.object({
 
 export default function Admin() {
   const [songs, setSongs] = useState<Song[]>([]);
-  const router = useRouter();
-  const form = useForm<z.infer<typeof FormSchema>>({
-    resolver: zodResolver(FormSchema),
-    defaultValues: {
-      title: "",
-      artistName: "",
-    },
-  });
 
   useEffect(() => {
     const fetchData = async () => {
@@ -72,26 +65,6 @@ export default function Admin() {
 
   const { data: session } = useSession();
 
-  const onSubmit = async (values: z.infer<typeof FormSchema>) => {
-    try {
-      console.log(values);
-      const res = await fetch(`${process.env.NEXT_PUBLIC_APP_URL}/api/songs`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          title: values.title,
-          artist: values.artistName,
-        }),
-      });
-      router.refresh();
-      const data = await res.json();
-      console.log(data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
   if (session?.user.role === "normal" || !session) {
     return (
       <Container>
@@ -104,58 +77,24 @@ export default function Admin() {
     );
   }
   return (
-    <div className="grid min-h-screen w-full lg:grid-cols-[280px_1fr] mt-20">
+    <div className="grid min-h-screen w-full lg:grid-cols-[280px_1fr]  ">
       <div className="hidden border-r bg-gray-100/40 lg:block dark:bg-gray-800/40">
         <div className="flex h-full max-h-screen flex-col gap-2">
           <div className="flex h-[60px] items-center border-b px-6">
-            <Link className="flex items-center gap-2 font-semibold" href="#">
+            <Link
+              className="flex items-center gap-2 font-semibold"
+              href="/music"
+            >
               <MusicIcon className="h-6 w-6" />
               <span className="">Music Admin</span>
             </Link>
           </div>
-          <div className="flex-1 overflow-auto py-2">
-            <Form {...form}>
-              <form
-                className="grid gap-4 px-4 text-sm font-medium"
-                onSubmit={form.handleSubmit(onSubmit)}
-              >
-                <FormField
-                  control={form.control}
-                  name="title"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Song Name</FormLabel>
-                      <FormControl>
-                        <Input placeholder="song name" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="artistName"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Artist</FormLabel>
-                      <FormControl>
-                        <Input placeholder="Name of Artist" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <Button className="mt-4" type="submit">
-                  Add Song
-                </Button>
-              </form>
-            </Form>
-          </div>
+          <CreateSongForm />
         </div>
       </div>
       <div className="flex flex-col">
         <header className="flex h-14 lg:h-[60px] items-center gap-4 border-b bg-gray-100/40 px-6 dark:bg-gray-800/40">
-          <Link className="lg:hidden" href="#">
+          <Link className="lg:hidden" href="/">
             <MusicIcon className="h-6 w-6" />
             <span className="sr-only">Home</span>
           </Link>
@@ -193,6 +132,18 @@ export default function Admin() {
                 ))}
               </TableBody>
             </Table>
+          </div>
+          <div className="block lg:hidden justify-center mt-5 p-5">
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex flex-col justify-center">
+                  <span className="text-base font-bold leading-none text-gray-70">
+                    Create Songs
+                  </span>
+                </CardTitle>
+                <CreateSongForm />
+              </CardHeader>
+            </Card>
           </div>
         </main>
       </div>
@@ -240,3 +191,75 @@ function SearchIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
     </svg>
   );
 }
+const CreateSongForm = () => {
+  const form = useForm<z.infer<typeof FormSchema>>({
+    resolver: zodResolver(FormSchema),
+    defaultValues: {
+      title: "",
+      artistName: "",
+    },
+  });
+  const router = useRouter();
+
+  const onSubmit = async (values: z.infer<typeof FormSchema>) => {
+    try {
+      console.log(values);
+      const res = await fetch(`${process.env.NEXT_PUBLIC_APP_URL}/api/songs`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          title: values.title,
+          artist: values.artistName,
+        }),
+      });
+      router.refresh();
+      values.artistName = "";
+      values.title = "";
+      window.location.reload();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  return (
+    <div className="flex-1 overflow-auto py-2">
+      <Form {...form}>
+        <form
+          className="grid gap-4 px-4 text-sm font-medium"
+          onSubmit={form.handleSubmit(onSubmit)}
+        >
+          <FormField
+            control={form.control}
+            name="title"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Song Name</FormLabel>
+                <FormControl>
+                  <Input placeholder="song name" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="artistName"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Artist</FormLabel>
+                <FormControl>
+                  <Input placeholder="Name of Artist" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <Button className="mt-4" type="submit">
+            Add Song
+          </Button>
+        </form>
+      </Form>
+    </div>
+  );
+};

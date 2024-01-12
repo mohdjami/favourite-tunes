@@ -6,6 +6,13 @@ import { buttonVariants } from "@/components/ui/button";
 import { Icons } from "@/components/Icons";
 import { SignUpForm } from "@/components/SignUpForm";
 import Container from "@/components/ui/container";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 
 export const metadata: Metadata = {
   title: "Sign in",
@@ -14,39 +21,37 @@ export const metadata: Metadata = {
 
 export default function Signin() {
   return (
-    <main className="container flex h-screen w-screen flex-col items-center justify-center">
-      {" "}
-      <Link
-        href="/"
-        className={cn(
-          buttonVariants({ variant: "ghost" }),
-          "absolute left-4 top-4 md:left-8 md:top-20"
-        )}
-      >
-        <>
-          <Icons.back className="mr-2 h-4 w-4" />
-          Back
-        </>
-      </Link>
-      <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px] bg-white-600 rounded-lg shadow-lg p-4">
-        {" "}
-        <div className="flex flex-col space-y-2 text-center ">
-          <h1 className="text-2xl font-semibold tracking-tight">
-            {" "}
-            Sign in to Continue
-          </h1>
+    <main className="container flex h-screen flex-col items-center justify-center  sm:p-10  sm:mt-10">
+      <Container>
+        <div className="flex justify-center">
+          <Card className="w-[450px] space-y-8">
+            <CardHeader>
+              <CardTitle>Sign In</CardTitle>
+              <CardDescription>
+                We use password-less authentication for simplicity.
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="grid gap-4">
+              <SignUpForm />
+            </CardContent>
+          </Card>
         </div>
-        <SignUpForm />
-        <p className="px-8 text-center text-sm text-muted-foreground ">
-          Don&apos;t have an account?{" "}
-          <Link
-            href="/signup"
-            className="hover:text-brand underline underline-offset-4 "
-          >
-            Sign up
-          </Link>
-        </p>
-      </div>
+      </Container>
+
+      <p className="px-8 text-center text-sm text-muted-foreground ">
+        Don&apos;t have an account?{" "}
+        <Link
+          href="/signup"
+          className="hover:text-brand underline underline-offset-4 "
+        >
+          Sign up
+        </Link>
+        <Link href="/" className={cn(buttonVariants({ variant: "ghost" }))}>
+          <>
+            <Icons.back className="mr-2 h-4 w-4" /> Back
+          </>
+        </Link>
+      </p>
     </main>
   );
 }

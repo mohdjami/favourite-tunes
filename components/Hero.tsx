@@ -6,182 +6,168 @@ import { authOptions } from "@/lib/auth";
 const session = getServerSession(authOptions);
 export default function Hero() {
   return (
-    <div className="flex flex-col min-h-screen bg-[#f5f5f5]">
-      <main className="flex-1">
-        <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-[#1e90ff] text-white">
-          <div className="container px-4 md:px-6">
-            <div className="flex flex-col items-center space-y-4 text-center">
-              <div className="space-y-2">
-                <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl">
-                  Discover Your Next Favourite Tune
-                </h1>
-                <p className="mx-auto max-w-[700px]">
-                  With our app, you can explore new music, create playlists, and
-                  share your favourite tunes with friends. Get started today!
-                </p>
-              </div>
-              <div className="space-x-4">
-                <Link
-                  className="inline-flex h-9 items-center justify-center rounded-md bg-[#ff4757] px-4 py-2 text-sm font-medium shadow transition-colors hover:bg-[#ff6b81] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#ff4757] disabled:pointer-events-none disabled:opacity-50"
-                  href="/signin"
-                >
-                  Get Started
-                </Link>
-                <Link
-                  className="inline-flex h-9 items-center justify-center rounded-md border border-white bg-transparent px-4 py-2 text-sm font-medium shadow-sm transition-colors hover:bg-white hover:text-[#1e90ff] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#ff4757] disabled:pointer-events-none disabled:opacity-50"
-                  href="https://www.github.com/mohdjami"
-                >
-                  Learn more
-                </Link>
-              </div>
-            </div>
-          </div>
-        </section>
-        <section
-          className="w-full py-12 md:py-24 lg:py-32 bg-white "
-          id="features"
-        >
-          <div className="container px-4 md:px-6">
-            <h2 className="text-3xl font-bold tracking-tighter text-center sm:text-4xl md:text-5xl text-[#2f3542]">
-              Key Features
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
-              <div className="flex flex-col items-center text-center">
-                <MusicIcon className="h-12 w-12 text-[#1e90ff]" />
-                <h3 className="mt-4 text-lg font-semibold text-[#2f3542]">
-                  Discover New Music
-                </h3>
-                <p className="mt-2 text-gray-600">
-                  Explore a vast library of tracks from all genres and find your
-                  next favourite tune.
-                </p>
-              </div>
-              <div className="flex flex-col items-center text-center">
-                <ListMusicIcon className="h-12 w-12 text-[#1e90ff]" />
-                <h3 className="mt-4 text-lg font-semibold text-[#2f3542]">
-                  Create Playlists
-                </h3>
-                <p className="mt-2 text-gray-600">
-                  Create and manage your own playlists. Add, remove, and reorder
-                  songs with ease.
-                </p>
-              </div>
-              <div className="flex flex-col items-center text-center">
-                <ShareIcon className="h-12 w-12 text-[#1e90ff]" />
-                <h3 className="mt-4 text-lg font-semibold text-[#2f3542]">
-                  Share with Friends
-                </h3>
-                <p className="mt-2 text-gray-600">
-                  Share your favourite songs or playlists with friends and
-                  discover what they&apos;re listening to.
-                </p>
+    <div className="container mx-auto px-4 lg:px-8 py-4">
+      <div className="flex flex-wrap -mx-2">
+        <main className="flex-1">
+          <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-[#1e90ff] text-white dark:bg-neutral-900 rounded mt-4">
+            <div className="container px-4 md:px-6 dark:text-cyan-900">
+              <div className="flex flex-col items-center space-y-4 text-center">
+                <div className="space-y-2">
+                  <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl dark:text-sky-300">
+                    Discover Your Next Favourite Tune
+                  </h1>
+                  <p className="mx-auto max-w-[700px] dark:text-cyan-100 ">
+                    With our app, you can explore new music, create playlists,
+                    and share your favourite tunes with friends. Get started
+                    today!
+                  </p>
+                </div>
+                <div className="space-x-4">
+                  <Link
+                    className="inline-flex h-9 items-center justify-center rounded-md bg-[#ff4757] px-4 py-2 text-sm font-medium shadow transition-colors hover:bg-[#ff6b81] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#ff4757] disabled:pointer-events-none disabled:opacity-50 dark:text-white"
+                    href="/signin"
+                  >
+                    Get Started
+                  </Link>
+                  <Link
+                    className="inline-flex h-9 items-center justify-center rounded-md border border-white bg-transparent px-4 py-2 text-sm font-medium shadow-sm transition-colors hover:bg-white hover:text-[#1e90ff] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#ff4757] disabled:pointer-events-none disabled:opacity-50 dark:text-sky-300"
+                    href="https://www.github.com/mohdjami"
+                  >
+                    Learn more
+                  </Link>
+                </div>
               </div>
             </div>
-          </div>
-        </section>
-        <section
-          className="w-full py-12 md:py-24 lg:py-32 bg-[#f1f2f6]"
-          id="testimonials"
-        >
-          <div className="container px-4 md:px-6">
-            <h2 className="text-3xl font-bold tracking-tighter text-center sm:text-4xl md:text-5xl text-[#2f3542]">
-              What Our Users Say
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
-              <div className="flex flex-col items-center text-center">
-                <Avatar className="h-16 w-16">
-                  <AvatarImage alt="User 1" src="/placeholder-avatar.jpg" />
-                  <AvatarFallback>U1</AvatarFallback>
-                </Avatar>
-                <h3 className="mt-4 text-lg font-semibold text-[#2f3542]">
-                  User 1
-                </h3>
-                <p className="mt-2 text-gray-600">
-                  &quot;My Favourite Tunes has completely changed the way I
-                  listen to music. I love the playlist feature!&quot;
-                </p>
-              </div>
-              <div className="flex flex-col items-center text-center">
-                <Avatar className="h-16 w-16">
-                  <AvatarImage alt="User 2" src="/placeholder-avatar.jpg" />
-                  <AvatarFallback>U2</AvatarFallback>
-                </Avatar>
-                <h3 className="mt-4 text-lg font-semibold text-[#2f3542]">
-                  User 2
-                </h3>
-                <p className="mt-2 text-gray-600">
-                  &quot;I&apos;ve discovered so many new artists through this
-                  app. It&apos;s a game changer.&quot;
-                </p>
-              </div>
-              <div className="flex flex-col items-center text-center">
-                <Avatar className="h-16 w-16">
-                  <AvatarImage alt="User 3" src="/placeholder-avatar.jpg" />
-                  <AvatarFallback>U3</AvatarFallback>
-                </Avatar>
-                <h3 className="mt-4 text-lg font-semibold text-[#2f3542]">
-                  User 3
-                </h3>
-                <p className="mt-2 text-gray-600">
-                  &quot;The user interface is intuitive and easy to navigate. I
-                  highly recommend My Favourite Tunes.&quot;
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-        <section
-          className="w-full py-12 md:py-24 lg:py-32 bg-[#1e90ff] text-white"
-          id="download"
-        >
-          <div className="container px-4 md:px-6">
-            <div className="flex flex-col items-center space-y-4 text-center">
-              <div className="space-y-2">
-                <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl">
-                  Ready to Discover Your Next Favourite Tune?
-                </h1>
-                <p className="mx-auto max-w-[700px]">
-                  Download our app today and start exploring new music, creating
-                  playlists, and sharing your favourite tunes with friends.
-                </p>
-              </div>
-              <div className="space-x-4">
-                <Link
-                  className="inline-flex h-9 items-center justify-center rounded-md bg-[#ff4757] px-4 py-2 text-sm font-medium shadow transition-colors hover:bg-[#ff6b81] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#ff4757] disabled:pointer-events-none disabled:opacity-50"
-                  href="#"
-                >
-                  Download Now
-                </Link>
-                <Link
-                  className="inline-flex h-9 items-center justify-center rounded-md border border-white bg-transparent px-4 py-2 text-sm font-medium shadow-sm transition-colors hover:bg-white hover:text-[#1e90ff] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#ff4757] disabled:pointer-events-none disabled:opacity-50"
-                  href="/signin"
-                >
-                  Sign Up for Free Trial
-                </Link>
-              </div>
-            </div>
-          </div>
-        </section>
-      </main>
-      <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t">
-        <p className="text-xs text-gray-500 dark:text-gray-400">
-          © My Favourite Tunes. All rights reserved.
-        </p>
-        <nav className="sm:ml-auto flex gap-4 sm:gap-6">
-          <Link
-            className="text-xs hover:underline underline-offset-4 text-[#2f3542]"
-            href="#"
+          </section>
+          <section
+            className="w-full py-12 md:py-24 lg:py-32 bg-white dark:bg-transparent"
+            id="features"
           >
-            Terms of Service
-          </Link>
-          <Link
-            className="text-xs hover:underline underline-offset-4 text-[#2f3542]"
-            href="#"
+            <div className="container px-4 md:px-6">
+              <h2 className="text-3xl font-bold tracking-tighter text-center sm:text-4xl md:text-5xl text-[#2f3542] ">
+                Key Features
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
+                <div className="flex flex-col items-center text-center">
+                  <MusicIcon className="h-12 w-12 text-[#1e90ff]" />
+                  <h3 className="text-base sm:text-lg md:text-xl font-semibold text-[#2f3542]">
+                    Discover New Music
+                  </h3>
+                  <p className="mt-2 text-gray-600">
+                    Explore a vast library of tracks from all genres and find
+                    your next favourite tune.
+                  </p>
+                </div>
+                <div className="flex flex-col items-center text-center">
+                  <ListMusicIcon className="h-12 w-12 text-[#1e90ff]" />
+                  <h3 className="mt-4 text-lg font-semibold text-[#2f3542]">
+                    Create Playlists
+                  </h3>
+                  <p className="mt-2 text-gray-600">
+                    Create and manage your own playlists. Add, remove, and
+                    reorder songs with ease.
+                  </p>
+                </div>
+                <div className="flex flex-col items-center text-center">
+                  <ShareIcon className="h-12 w-12 text-[#1e90ff]" />
+                  <h3 className="mt-4 text-lg font-semibold text-[#2f3542]">
+                    Share with Friends
+                  </h3>
+                  <p className="mt-2 text-gray-600">
+                    Share your favourite songs or playlists with friends and
+                    discover what they&apos;re listening to.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section
+            className="w-full py-12 md:py-24 lg:py-32 bg-[#b6bdd3] rounded mt-4 "
+            id="testimonials"
           >
-            Privacy
-          </Link>
-        </nav>
-      </footer>
+            <div className="container px-4 md:px-6">
+              <h2 className="text-3xl font-bold tracking-tighter text-center sm:text-4xl md:text-5xl text-[#2f3542]">
+                What Our Users Say
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
+                <div className="flex flex-col items-center text-center">
+                  <Avatar className="h-16 w-16 bg-slate-50 dark:bg-white">
+                    <AvatarImage alt="User 1" src="/placeholder-avatar.jpg" />
+                    <AvatarFallback>U1</AvatarFallback>
+                  </Avatar>
+                  <h3 className="mt-4 text-lg font-semibold text-[#2f3542]">
+                    User 1
+                  </h3>
+                  <p className="mt-2 text-gray-600">
+                    &quot;My Favourite Tunes has completely changed the way I
+                    listen to music. I love the playlist feature!&quot;
+                  </p>
+                </div>
+                <div className="flex flex-col items-center text-center">
+                  <Avatar className="h-16 w-16">
+                    <AvatarImage alt="User 2" src="/placeholder-avatar.jpg" />
+                    <AvatarFallback>U2</AvatarFallback>
+                  </Avatar>
+                  <h3 className="mt-4 text-lg font-semibold text-[#2f3542]">
+                    User 2
+                  </h3>
+                  <p className="mt-2 text-gray-600">
+                    &quot;I&apos;ve discovered so many new artists through this
+                    app. It&apos;s a game changer.&quot;
+                  </p>
+                </div>
+                <div className="flex flex-col items-center text-center">
+                  <Avatar className="h-16 w-16">
+                    <AvatarImage alt="User 3" src="/placeholder-avatar.jpg" />
+                    <AvatarFallback>U3</AvatarFallback>
+                  </Avatar>
+                  <h3 className="mt-4 text-lg font-semibold text-[#2f3542]">
+                    User 3
+                  </h3>
+                  <p className="mt-2 text-gray-600">
+                    &quot;The user interface is intuitive and easy to navigate.
+                    I highly recommend My Favourite Tunes.&quot;
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section
+            className="w-full py-12 md:py-24 lg:py-32 bg-[#1e90ff] text-white dark:bg-neutral-900 rounded mt-4"
+            id="download"
+          >
+            <div className="container px-4 md:px-6 ">
+              <div className="flex flex-col items-center space-y-4 text-center ">
+                <div className="space-y-2 dark:te">
+                  <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl dark:text-cyan-500">
+                    Ready to Discover Your Next Favourite Tune?
+                  </h1>
+                  <p className="mx-auto max-w-[700px] dark:text-cyan-100">
+                    Download our app today and start exploring new music,
+                    creating playlists, and sharing your favourite tunes with
+                    friends.
+                  </p>
+                </div>
+                <div className="space-x-4 justify-between md:justify-center">
+                  <Link
+                    className="inline-flex h-9 items-center justify-center rounded-md bg-[#ff4757] px-4 py-2 text-sm font-medium shadow transition-colors hover:bg-[#ff6b81] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#ff4757] disabled:pointer-events-none disabled:opacity-50 "
+                    href="#"
+                  >
+                    Download Now
+                  </Link>
+
+                  <Link
+                    className="inline-flex h-9 items-center justify-center rounded-md border border-white bg-transparent px-4 py-2 text-sm font-medium shadow-sm transition-colors hover:bg-white hover:text-[#1e90ff] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#ff4757] disabled:pointer-events-none disabled:opacity-50 dark:text-cyan-500"
+                    href="/signin"
+                  >
+                    Sign Up for Free Trial
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
     </div>
   );
 }

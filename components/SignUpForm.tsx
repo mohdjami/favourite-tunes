@@ -22,6 +22,7 @@ import { Input } from "@/components/ui/input";
 import { toast } from "@/components/ui/use-toast";
 import { Icons } from "@/components/Icons";
 import { Card } from "./ui/card";
+import Container from "./ui/container";
 
 interface SignUpFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 const FormSchema = z.object({
@@ -50,6 +51,7 @@ export function SignUpForm({ className, ...props }: SignUpFormProps) {
   }
   return (
     <div className={cn("grid gap-2", className)} {...props}>
+      {" "}
       <button
         type="button"
         className={cn(buttonVariants({ variant: "outline" }))}
@@ -93,47 +95,48 @@ export function SignUpForm({ className, ...props }: SignUpFormProps) {
         )}{" "}
         Continue with Github
       </button>
-      <div>
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="grid gap-2">
-            <FormField
-              control={form.control}
-              name="email"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Email</FormLabel>
-                  <FormControl>
-                    <Input placeholder="email@domain.com" {...field} />
-                  </FormControl>
-                  <FormDescription>
-                    <Card>
-                      {" "}
-                      <p className="px-8 text-center text-sm text-muted-foreground">
-                        We will send you a login link.
-                      </p>
-                    </Card>
-                  </FormDescription>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            {showSend ? (
-              <Button disabled={!showSend} type="submit">
-                Send login link
-              </Button>
-            ) : (
-              <Turnstile
-                siteKey={
-                  process.env.NEXT_PUBLIC_CLOUDFLARE_TURNSTILE_SITE_KEY || ""
-                }
-                onError={() => {
-                  setShowSend(true);
-                }}
-              />
+      <Form {...form}>
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="grid gap-2 w-full text-center"
+        >
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Email</FormLabel>
+                <FormControl>
+                  <Input placeholder="email@domain.com" {...field} />
+                </FormControl>
+                <FormDescription>
+                  <Card>
+                    <p className="px-2 sm:px-8 text-center text-sm text-muted-foreground">
+                      We will send you a login link.
+                    </p>
+                  </Card>
+                </FormDescription>
+                <FormMessage />
+              </FormItem>
             )}
-          </form>
-        </Form>
-      </div>
+          />
+
+          {!showSend ? (
+            <Button disabled={showSend} type="submit">
+              Send login link
+            </Button>
+          ) : (
+            <Turnstile
+              siteKey={
+                process.env.NEXT_PUBLIC_CLOUDFLARE_TURNSTILE_SITE_KEY || ""
+              }
+              onError={() => {
+                setShowSend(true);
+              }}
+            />
+          )}
+        </form>
+      </Form>
     </div>
   );
 }

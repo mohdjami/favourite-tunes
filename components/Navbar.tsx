@@ -22,63 +22,66 @@ const Navbar = async () => {
                 My Favourite Tunes
               </span>
             </Link>
-            <header className="px-4 lg:px-6 h-16 flex items-center">
-              {session ? (
-                <nav className="ml-auto flex gap-4 sm:gap-6">
-                  {" "}
-                  <Link
-                    className="text-sm font-medium hover:underline underline-offset-4 text-[#2f3542]"
-                    href="/dashboard"
-                  >
-                    Dashboard
-                  </Link>
-                  {session?.user?.role === "normal" ? (
+            <div className="hidden sm:flex items-center">
+              <header className="px-4 lg:px-6 h-16 flex items-center">
+                {session ? (
+                  <nav className="ml-auto flex gap-4 sm:gap-6">
+                    {" "}
                     <Link
                       className="text-sm font-medium hover:underline underline-offset-4 text-[#2f3542]"
-                      href="/music"
+                      href="/dashboard"
                     >
-                      Music
+                      Dashboard
                     </Link>
-                  ) : (
-                    <>
+                    {session?.user?.role === "normal" ? (
                       <Link
                         className="text-sm font-medium hover:underline underline-offset-4 text-[#2f3542]"
                         href="/music"
                       >
                         Music
                       </Link>
-                      <Link
-                        className="text-sm font-medium hover:underline underline-offset-4 text-[#2f3542]"
-                        href="/admin"
-                      >
-                        Admin Panel
-                      </Link>
-                    </>
-                  )}
-                </nav>
-              ) : (
-                <nav className="ml-auto flex gap-4 sm:gap-6">
-                  <Link
-                    className="text-sm font-medium hover:underline underline-offset-4 text-[#2f3542]"
-                    href="/#features"
-                  >
-                    Features
-                  </Link>
-                  <Link
-                    className="text-sm font-medium hover:underline underline-offset-4 text-[#2f3542]"
-                    href="/#testimonials"
-                  >
-                    Testimonials
-                  </Link>
-                  <Link
-                    className="text-sm font-medium hover:underline underline-offset-4 text-[#2f3542]"
-                    href="/#download"
-                  >
-                    Download
-                  </Link>
-                </nav>
-              )}
-            </header>
+                    ) : (
+                      <>
+                        <Link
+                          className="text-sm font-medium hover:underline underline-offset-4 text-[#2f3542]"
+                          href="/music"
+                        >
+                          Music
+                        </Link>
+                        <Link
+                          className="text-sm font-medium hover:underline underline-offset-4 text-[#2f3542]"
+                          href="/admin"
+                        >
+                          Admin Panel
+                        </Link>
+                      </>
+                    )}
+                  </nav>
+                ) : (
+                  <nav className="ml-auto flex gap-4 sm:gap-6">
+                    <Link
+                      className="text-sm font-medium hover:underline underline-offset-4 text-[#2f3542]"
+                      href="/#features"
+                    >
+                      Features
+                    </Link>
+                    <Link
+                      className="text-sm font-medium hover:underline underline-offset-4 text-[#2f3542]"
+                      href="/#testimonials"
+                    >
+                      Testimonials
+                    </Link>
+                    <Link
+                      className="text-sm font-medium hover:underline underline-offset-4 text-[#2f3542]"
+                      href="/#download"
+                    >
+                      Download
+                    </Link>
+                  </nav>
+                )}
+              </header>
+            </div>
+            <div className="sm:hidden">{/* Hamburger menu icon here */}</div>
             <div className="flex items-center">
               {session?.user ? (
                 <UserAccountNav />

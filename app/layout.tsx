@@ -8,6 +8,8 @@ import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from "@/components/Theme-provider";
 import Navbar from "@/components/Navbar";
 import Provider from "@/components/Provider";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -61,11 +63,12 @@ export default async function RootLayout({ children }: RootLayoutProps) {
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.className} flex min-h-screen flex-col`}>
         <Provider>
-          <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+          <ThemeProvider attribute="class" enableSystem={false}>
             <NextTopLoader color="#DC2645" height={2.5} showSpinner={false} />
-            <Navbar />
+            <Header />
             {children}
             <Toaster />
+            <Footer />
           </ThemeProvider>
         </Provider>
       </body>

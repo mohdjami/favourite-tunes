@@ -18,6 +18,7 @@ import { Song } from "@/types";
 import SkeletonLoader from "@/components/Skeleton";
 import { useSession } from "next-auth/react";
 import { Card, CardHeader, CardTitle } from "@/components/ui/card";
+import Views from "@/components/Views";
 
 export default function MusicPage() {
   const [songs, setSongs] = useState<Song[]>([]);
@@ -68,7 +69,7 @@ export default function MusicPage() {
   return (
     <>
       {" "}
-      <main className="flex flex-col items-center justify-center mt-20">
+      <main className="flex flex-col items-center justify-center ">
         {" "}
         <div className="hidden md:block">
           <Menu />
@@ -150,7 +151,18 @@ export default function MusicPage() {
               </div>
             </div>
           </div>
+        </div>{" "}
+        <div className="md:block">
+          <Menu />
+          <div className="border-t">
+            <div className="bg-background">
+              <div className="grid lg:grid-cols-5">
+                <Sidebar playlists={playlists} className="lg:block" />
+              </div>
+            </div>
+          </div>
         </div>
+        <Views />
       </main>
     </>
   );

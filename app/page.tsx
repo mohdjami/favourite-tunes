@@ -1,5 +1,9 @@
 import Hero from "@/components/Hero";
+import { authOptions } from "@/lib/auth";
+import { getServerSession } from "next-auth";
 
-export default function Home() {
+export const dynamic = "force-dynamic";
+
+export default async function Index() {
   return <Hero />;
 }
