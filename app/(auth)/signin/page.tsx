@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
 import { Icons } from "@/components/Icons";
 import { SignUpForm } from "@/components/SignUpForm";
-import { Container } from "postcss";
+import Container from "@/components/ui/container";
 
 export const metadata: Metadata = {
   title: "Sign in",
@@ -14,7 +14,8 @@ export const metadata: Metadata = {
 
 export default function Signin() {
   return (
-    <main className="container flex h-screen w-screen flex-col items-center justify-center ">
+    <main className="container flex h-screen w-screen flex-col items-center justify-center">
+      {" "}
       <Link
         href="/"
         className={cn(
@@ -27,19 +28,20 @@ export default function Signin() {
           Back
         </>
       </Link>
-      <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
-        <div className="flex flex-col space-y-2 text-center">
-          <h1 className="text-2xl font-semibold tracking-tight">Sign in</h1>
-          <p className="text-sm text-muted-foreground">
-            Sign in to your account
-          </p>
+      <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px] bg-white-600 rounded-lg shadow-lg p-4">
+        {" "}
+        <div className="flex flex-col space-y-2 text-center ">
+          <h1 className="text-2xl font-semibold tracking-tight">
+            {" "}
+            Sign in to Continue
+          </h1>
         </div>
         <SignUpForm />
-        <p className="px-8 text-center text-sm text-muted-foreground">
+        <p className="px-8 text-center text-sm text-muted-foreground ">
           Don&apos;t have an account?{" "}
           <Link
             href="/signup"
-            className="hover:text-brand underline underline-offset-4"
+            className="hover:text-brand underline underline-offset-4 "
           >
             Sign up
           </Link>

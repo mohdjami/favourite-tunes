@@ -21,6 +21,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { toast } from "@/components/ui/use-toast";
 import { Icons } from "@/components/Icons";
+import { Card } from "./ui/card";
 
 interface SignUpFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 const FormSchema = z.object({
@@ -105,7 +106,12 @@ export function SignUpForm({ className, ...props }: SignUpFormProps) {
                     <Input placeholder="email@domain.com" {...field} />
                   </FormControl>
                   <FormDescription>
-                    We will send you a login link.
+                    <Card>
+                      {" "}
+                      <p className="px-8 text-center text-sm text-muted-foreground">
+                        We will send you a login link.
+                      </p>
+                    </Card>
                   </FormDescription>
                   <FormMessage />
                 </FormItem>

@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 
 export default function Signin() {
   return (
-    <main className="container flex h-screen w-screen flex-col items-center justify-center ">
+    <main className="container flex h-screen w-screen flex-col items-center justify-center p-10 ">
       <Container>
         <Link
           href="/"
@@ -24,25 +24,24 @@ export default function Signin() {
           )}
         >
           <>
-            <Icons.back className="mr-2 h-4 w-4" />
-            Back
+            <Icons.back className="mr-2 h-4 w-4" /> Back
           </>
         </Link>
-        <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
-          <div className="flex flex-col space-y-2 text-center">
-            <h1 className="text-2xl font-semibold tracking-tight">Sign in</h1>
-            <p className="text-sm text-muted-foreground">
-              Sign in to your account
-            </p>
+        <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px] bg-white-600 rounded-lg shadow-lg p-4">
+          <div className="flex flex-col space-y-2 text-center ">
+            <h1 className="text-2xl font-semibold tracking-tight">
+              {" "}
+              Sign up to Continue
+            </h1>
           </div>
           <SignUpForm />
           <p className="px-8 text-center text-sm text-muted-foreground">
-            Don&apos;t have an account?{" "}
+            Already have an account?{" "}
             <Link
-              href="/signup"
+              href="/signin"
               className="hover:text-brand underline underline-offset-4"
             >
-              Sign up
+              Sign in
             </Link>
           </p>
         </div>

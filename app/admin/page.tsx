@@ -48,12 +48,6 @@ export default function Admin() {
       artistName: "",
     },
   });
-  // const songsWithArtistNames = await Promise.all(
-  //   data.songs.map(async (song: { artistId: any }) => {
-  //     const artistName = await fetchArtistById(song.artistId);
-  //     return { ...song, artistName };
-  //   })
-  // );
 
   useEffect(() => {
     const fetchData = async () => {
