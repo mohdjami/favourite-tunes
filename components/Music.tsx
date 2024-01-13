@@ -17,11 +17,14 @@ import { useSession } from "next-auth/react";
 import { Card, CardHeader, CardTitle } from "@/components/ui/card";
 import Views from "@/components/Views";
 import { redirect } from "next/navigation";
+import { PlaylistEmptyPlaceholder } from "./playlist-empty-placeholder";
+import { MusicEmptyPlaceholder } from "./add-music-placeholder";
 
 export default function MusicPage() {
   const [songs, setSongs] = useState<Song[]>([]);
   const [loading, isLoading] = useState(true);
   const { data: session } = useSession();
+  const user = session?.user;
   useEffect(() => {
     const fetchData = async () => {
       isLoading(true);
@@ -69,15 +72,10 @@ export default function MusicPage() {
                           Music
                         </TabsTrigger>
                         <TabsTrigger value="podcasts">Podcasts</TabsTrigger>
-                        <TabsTrigger value="live" disabled>
-                          Live
-                        </TabsTrigger>
+                        <TabsTrigger value="playlist">Playlist</TabsTrigger>
                       </TabsList>
                       <div className="ml-auto mr-4">
-                        <Button>
-                          <PlusCircledIcon className="mr-2 h-4 w-4" />
-                          Add music
-                        </Button>
+                        <MusicEmptyPlaceholder />
                       </div>
                     </div>
                     <TabsContent
@@ -127,6 +125,23 @@ export default function MusicPage() {
                       </div>
                       <Separator className="my-4" />
                       <PodcastEmptyPlaceholder />
+                    </TabsContent>
+                    <TabsContent
+                      value="playlist"
+                      className="h-full flex-col border-none p-0 data-[state=active]:flex"
+                    >
+                      <div className="flex items-center justify-between">
+                        <div className="space-y-1">
+                          <h2 className="text-2xl font-semibold tracking-tight">
+                            Sart Creating Your own Playlists{" "}
+                          </h2>
+                          <p className="text-sm text-muted-foreground">
+                            Soon to be added functionality{" "}
+                          </p>
+                        </div>
+                      </div>
+                      <Separator className="my-4" />
+                      <PlaylistEmptyPlaceholder />
                     </TabsContent>
                   </Tabs>
                 </div>

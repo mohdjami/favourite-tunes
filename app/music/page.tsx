@@ -6,10 +6,10 @@ import { redirect } from "next/navigation";
 import React from "react";
 
 const MusicPage = async () => {
-  const session = await getServerSession(authOptions);
-  if (!session) {
-    redirect("/");
-  }
+  // const session = await getServerSession(authOptions);
+  // if (!session) {
+  //   redirect("/");
+  // }
   return <Music />;
 };
 

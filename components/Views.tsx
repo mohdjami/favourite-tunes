@@ -10,6 +10,8 @@ import { PlusCircledIcon } from "@radix-ui/react-icons";
 import SkeletonLoader from "./Skeleton";
 import { useSession } from "next-auth/react";
 import { Song } from "@/types";
+import { PlaylistEmptyPlaceholder } from "./playlist-empty-placeholder";
+import { MusicEmptyPlaceholder } from "./add-music-placeholder";
 
 export default function Views() {
   const [songs, setSongs] = useState<Song[]>([]);
@@ -56,10 +58,7 @@ export default function Views() {
               </TabsTrigger>
             </TabsList>
             <div className="ml-auto mr-4">
-              <Button>
-                <PlusCircledIcon className="mr-2 h-4 w-4" />
-                Add music
-              </Button>
+              <MusicEmptyPlaceholder />
             </div>
           </div>
           <TabsContent value="music" className="border-none p-0 outline-none">
@@ -106,6 +105,23 @@ export default function Views() {
             </div>
             <Separator className="my-4" />
             <PodcastEmptyPlaceholder />
+          </TabsContent>
+          <TabsContent
+            value="podcasts"
+            className="h-full flex-col border-none p-0 data-[state=active]:flex"
+          >
+            <div className="flex items-center justify-between">
+              <div className="space-y-1">
+                <h2 className="text-2xl font-semibold tracking-tight">
+                  New Episodes
+                </h2>
+                <p className="text-sm text-muted-foreground">
+                  Your favorite podcasts. Updated daily.
+                </p>
+              </div>
+            </div>
+            <Separator className="my-4" />
+            <PlaylistEmptyPlaceholder />
           </TabsContent>
         </Tabs>
       </div>
