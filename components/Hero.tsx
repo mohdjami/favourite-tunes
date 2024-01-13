@@ -14,7 +14,7 @@ export default async function Hero() {
             <div className="container px-4 md:px-6 dark:text-cyan-900">
               <div className="flex flex-col items-center space-y-4 text-center">
                 <div className="space-y-2">
-                  <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl dark:text-sky-300">
+                  <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl dark:text-stone-50">
                     Discover Your Next Favourite Tune
                   </h1>
                   <p className="mx-auto max-w-[700px] dark:text-cyan-100 ">
@@ -31,7 +31,7 @@ export default async function Hero() {
                     Get Started
                   </Link>
                   <Link
-                    className="inline-flex h-9 items-center justify-center rounded-md border border-white bg-transparent px-4 py-2 text-sm font-medium shadow-sm transition-colors hover:bg-white hover:text-[#1e90ff] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#ff4757] disabled:pointer-events-none disabled:opacity-50 dark:text-sky-300"
+                    className="inline-flex h-9 items-center justify-center rounded-md border border-white bg-transparent px-4 py-2 text-sm font-medium shadow-sm transition-colors hover:bg-white hover:text-[#1e90ff] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#ff4757] disabled:pointer-events-none disabled:opacity-50 dark:text-stone-50"
                     href="https://www.github.com/mohdjami"
                   >
                     Learn more
@@ -140,10 +140,10 @@ export default async function Hero() {
             <div className="container px-4 md:px-6 ">
               <div className="flex flex-col items-center space-y-4 text-center ">
                 <div className="space-y-2 dark:te">
-                  <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl dark:text-cyan-500">
+                  <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl dark:text-stone-50">
                     Ready to Discover Your Next Favourite Tune?
                   </h1>
-                  <p className="mx-auto max-w-[700px] dark:text-cyan-100">
+                  <p className="mx-auto max-w-[700px] dark:text-stone-50">
                     Download our app today and start exploring new music,
                     creating playlists, and sharing your favourite tunes with
                     friends.
@@ -158,7 +158,7 @@ export default async function Hero() {
                   </Link>
 
                   <Link
-                    className="inline-flex h-9 items-center justify-center rounded-md border border-white bg-transparent px-4 py-2 text-sm font-medium shadow-sm transition-colors hover:bg-white hover:text-[#1e90ff] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#ff4757] disabled:pointer-events-none disabled:opacity-50 dark:text-cyan-500"
+                    className="inline-flex h-9 items-center justify-center rounded-md border border-white bg-transparent px-4 py-2 text-sm font-medium shadow-sm transition-colors hover:bg-white hover:text-[#1e90ff] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#ff4757] disabled:pointer-events-none disabled:opacity-50 dark:text-stone-50"
                     href="/signin"
                   >
                     Sign Up for Free Trial

@@ -79,7 +79,7 @@ const HeaderRoutes = async () => {
         </Sheet>
         <Link className="flex items-center justify-center" href="/">
           <MusicIcon className="h-6 w-6 text-[#ff4757]" />
-          <span className="ml-2 text-lg font-bold text-[#2f3542] dark:text-cyan-400">
+          <span className="ml-2 text-lg font-bold text-[#2f3542] dark:text-stone-50">
             My Favourite Tunes
           </span>
         </Link>
