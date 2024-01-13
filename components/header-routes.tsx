@@ -32,6 +32,10 @@ const HeaderRoutes = async () => {
   ];
   const loggedOut = [
     {
+      href: "/overview",
+      label: "Overview",
+    },
+    {
       href: "/#features",
       label: "Features",
     },
@@ -42,10 +46,6 @@ const HeaderRoutes = async () => {
     {
       href: "/#download",
       label: "Download",
-    },
-    {
-      href: "/dashboard",
-      label: "Dashboard",
     },
   ];
   const user = session?.user;
