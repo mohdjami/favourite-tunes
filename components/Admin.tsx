@@ -1,9 +1,6 @@
 "use client";
 import Link from "next/link";
-import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Button } from "@/components/ui/button";
 import {
   TableHead,
   TableRow,
@@ -13,22 +10,8 @@ import {
   Table,
 } from "@/components/ui/table";
 import { JSX, SVGProps, SetStateAction, useEffect, useState } from "react";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/lib/auth";
-import Container from "@/components/ui/container";
-import { fetchSongs } from "@/lib/api/fetchSongs";
 import { useSession } from "next-auth/react";
-import { z } from "zod";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
+
 import { Song } from "@/types";
 import { redirect, useRouter } from "next/navigation";
 import { Card, CardHeader, CardTitle } from "@/components/ui/card";

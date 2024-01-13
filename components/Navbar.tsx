@@ -6,10 +6,9 @@ import { Session, getServerSession } from "next-auth";
 import UserAccountNav from "./UserAccountNav";
 import { ModeToggle } from "./ui/mode-toggle";
 import { cva } from "class-variance-authority";
+const session: Session | null = await getServerSession(authOptions);
 
 const Navbar = async () => {
-  const session: Session | null = await getServerSession(authOptions);
-
   return (
     <div>
       <main>

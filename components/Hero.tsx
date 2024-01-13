@@ -3,8 +3,9 @@ import { AvatarImage, AvatarFallback, Avatar } from "@/components/ui/avatar";
 import { JSX, SVGProps } from "react";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
-const session = getServerSession(authOptions);
-export default function Hero() {
+export default async function Hero() {
+  const session = await getServerSession(authOptions);
+
   return (
     <div className="container mx-auto px-4 lg:px-8 py-4">
       <div className="flex flex-wrap -mx-2">

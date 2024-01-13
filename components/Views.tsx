@@ -1,3 +1,4 @@
+"use client";
 import React, { useEffect, useState } from "react";
 import { Separator } from "./seperator";
 import { PodcastEmptyPlaceholder } from "./podcast-empty-placeholder";

@@ -15,6 +15,7 @@ import LogoutAlert from "./LogutAlert";
 
 const ProfileButton = async () => {
   const session = await getServerSession(authOptions);
+
   const user = session?.user;
   return (
     <>

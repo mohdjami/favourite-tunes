@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   description: "Sign in to your account",
 };
 
-export default function Signin() {
+export default async function Signin() {
   return (
     <main className="container flex  flex-col items-center justify-center  sm:p-10  sm:mt-10">
       <Container>

@@ -6,6 +6,8 @@ import Link from "next/link";
 import { Button } from "./ui/button";
 
 const HeaderRoutes = async () => {
+  const session = await getServerSession(authOptions);
+
   const loggedIn = [
     {
       href: "/dashboard",
@@ -38,7 +40,6 @@ const HeaderRoutes = async () => {
       label: "Dashboard",
     },
   ];
-  const session = await getServerSession(authOptions);
   const user = session?.user;
   const routes = user ? loggedIn : loggedOut;
   return (
