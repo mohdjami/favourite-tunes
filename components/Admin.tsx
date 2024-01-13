@@ -10,19 +10,20 @@ import {
   Table,
 } from "@/components/ui/table";
 import { JSX, SVGProps, SetStateAction, useEffect, useState } from "react";
-import { useSession } from "next-auth/react";
 
 import { Song } from "@/types";
 import { redirect, useRouter } from "next/navigation";
 import { Card, CardHeader, CardTitle } from "@/components/ui/card";
 import CreateSongForm from "./CreateSongForm";
+import { Skeleton } from "./ui/skeleton";
 
 export default function Admin() {
   const [songs, setSongs] = useState<Song[]>([]);
-  const { data: session } = useSession();
+  const [loading, isLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
+      isLoading(true);
       const res = await fetch(`${process.env.NEXT_PUBLIC_APP_URL}/api/songs`);
       const data = await res.json();
       const songsWithArtistNames = await Promise.all(
@@ -35,14 +36,13 @@ export default function Admin() {
           return { ...song, artistName };
         })
       );
+      isLoading(false);
       setSongs(songsWithArtistNames);
     };
 
     fetchData();
   }, []);
-  // if (session?.user.role === "normal" || !session) {
-  //   redirect("/");
-  // }
+
   return (
     <div className="grid min-h-screen w-full lg:grid-cols-[280px_1fr]  ">
       <div className="hidden border-r bg-gray-100/40 lg:block dark:bg-gray-800/40">
@@ -60,7 +60,7 @@ export default function Admin() {
         </div>
       </div>
       <div className="flex flex-col">
-        <header className="flex h-14 lg:h-[60px] items-center gap-4 border-b bg-gray-100/40 px-6 dark:bg-gray-800/40">
+        <div className="flex h-14 lg:h-[60px] items-center gap-4 border-b bg-gray-100/40 px-6 dark:bg-gray-800/40">
           <Link className="lg:hidden" href="/">
             <MusicIcon className="h-6 w-6" />
             <span className="sr-only">Home</span>
@@ -77,8 +77,8 @@ export default function Admin() {
               </div>
             </form>
           </div>
-        </header>
-        <main className="flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-6">
+        </div>
+        <div className="flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-6">
           <div className="flex items-center">
             <h1 className="font-semibold text-lg md:text-2xl">Songs</h1>
           </div>
@@ -91,12 +91,18 @@ export default function Admin() {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {songs.map((song: Song, index: number) => (
-                  <TableRow key={index}>
-                    <TableCell className="font-medium">{song.title}</TableCell>
-                    <TableCell>{song.artistName}</TableCell>
-                  </TableRow>
-                ))}
+                {loading ? (
+                  <Skeleton />
+                ) : (
+                  songs.map((song: Song, index: number) => (
+                    <TableRow key={index}>
+                      <TableCell className="font-medium">
+                        {song.title}
+                      </TableCell>
+                      <TableCell>{song.artistName}</TableCell>
+                    </TableRow>
+                  ))
+                )}
               </TableBody>
             </Table>
           </div>
@@ -112,7 +118,7 @@ export default function Admin() {
               </CardHeader>
             </Card>
           </div>
-        </main>
+        </div>
       </div>
     </div>
   );
