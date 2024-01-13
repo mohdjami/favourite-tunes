@@ -10,6 +10,10 @@ const HeaderRoutes = async () => {
 
   const loggedIn = [
     {
+      href: "/#overview",
+      label: "Overview",
+    },
+    {
       href: "/dashboard",
       label: "Dashboard",
     },
@@ -32,7 +36,7 @@ const HeaderRoutes = async () => {
   ];
   const loggedOut = [
     {
-      href: "/overview",
+      href: "/#overview",
       label: "Overview",
     },
     {
