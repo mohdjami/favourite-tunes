@@ -16,7 +16,7 @@ const Header = () => {
       label: "Testimonials",
     },
     {
-      href: "/#dloanload",
+      href: "/#download",
       label: "Dashboard",
     },
   ];

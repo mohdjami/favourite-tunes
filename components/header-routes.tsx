@@ -18,8 +18,16 @@ const HeaderRoutes = async () => {
       label: "Music",
     },
     {
-      href: "/admin",
-      label: "Admin",
+      href: "/#features",
+      label: "Features",
+    },
+    {
+      href: "/#testimonials",
+      label: "Testimonials",
+    },
+    {
+      href: "/#download",
+      label: "Download",
     },
   ];
   const loggedOut = [
@@ -41,6 +49,12 @@ const HeaderRoutes = async () => {
     },
   ];
   const user = session?.user;
+  if (session?.user.role === "admin") {
+    loggedIn.push({
+      href: "/admin",
+      label: "Admin",
+    });
+  }
   const routes = user ? loggedIn : loggedOut;
   return (
     <>
