@@ -13,5 +13,12 @@ export async function GET(req: Request) {
     );
   } catch (error) {
     console.log(error);
+    return NextResponse.json(
+      {
+        error: error,
+        message: "error are listed above",
+      },
+      { status: 500 }
+    );
   }
 }

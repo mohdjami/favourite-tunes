@@ -52,11 +52,16 @@ const ProfileButton = async () => {
                 Listen Music
               </DropdownMenuItem>
             </Link>
-            <Link href="/admin">
-              <DropdownMenuItem className="cursor-pointer">
-                Admin Panel
-              </DropdownMenuItem>
-            </Link>
+            {session.user.role === "admin" ? (
+              <Link href="/admin">
+                <DropdownMenuItem className="cursor-pointer">
+                  Admin Panel
+                </DropdownMenuItem>
+              </Link>
+            ) : (
+              <></>
+            )}
+
             <DropdownMenuSeparator />
             <LogoutAlert />
           </DropdownMenuContent>

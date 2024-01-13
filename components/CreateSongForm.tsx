@@ -1,23 +1,8 @@
 "use client";
-import Link from "next/link";
-import { Label } from "@/components/ui/label";
+
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import {
-  TableHead,
-  TableRow,
-  TableHeader,
-  TableCell,
-  TableBody,
-  Table,
-} from "@/components/ui/table";
-import { JSX, SVGProps, SetStateAction, useEffect, useState } from "react";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/lib/auth";
-import Container from "@/components/ui/container";
-import { fetchSongs } from "@/lib/api/fetchSongs";
-import { useSession } from "next-auth/react";
+
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -29,15 +14,13 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Song } from "@/types";
-import { redirect, useRouter } from "next/navigation";
-import { Card, CardHeader, CardTitle } from "@/components/ui/card";
-import exp from "constants";
+import { toast } from "./ui/use-toast";
 
 const FormSchema = z.object({
   title: z.string().min(1, "title is required").max(100),
   artistName: z.string().min(1, "artist is required"),
 });
+
 const CreateSongForm = () => {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
@@ -56,6 +39,9 @@ const CreateSongForm = () => {
       });
       values.artistName = "";
       values.title = "";
+      toast({
+        title: "You are successfully logged in!",
+      });
       window.location.reload();
     } catch (error) {
       console.log(error);
