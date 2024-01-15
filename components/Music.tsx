@@ -58,7 +58,6 @@ export default function MusicPage() {
     <main className="flex flex-col items-center justify-center ">
       {" "}
       <div className="hidden md:block">
-        <Menu />
         <div className="border-t">
           <div className="bg-background">
             <div className="grid lg:grid-cols-5">
@@ -151,8 +150,7 @@ export default function MusicPage() {
           </div>
         </div>
       </div>{" "}
-      <div className="block lg:hidden justify-center mt-5 p-5">
-        <Menu />
+      <div className="block lg:hidden justify-center ">
         <div className="border-t">
           <div className="bg-background">
             <div className="grid lg:grid-cols-5">

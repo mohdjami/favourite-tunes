@@ -6,11 +6,15 @@ import { redirect } from "next/navigation";
 import React from "react";
 
 const MusicPage = async () => {
-  // const session = await getServerSession(authOptions);
-  // if (!session) {
-  //   redirect("/");
-  // }
-  return <Music />;
+  const session = await getServerSession(authOptions);
+  if (!session) {
+    redirect("/");
+  }
+  return (
+    <main className="flex overflow-auto w-full">
+      <Music />
+    </main>
+  );
 };
 
 export default MusicPage;
