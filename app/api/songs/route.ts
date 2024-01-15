@@ -20,6 +20,11 @@ export async function POST(req: Request) {
     where: { name: artist },
     select: { id: true },
   });
+  const titleExists = await db.song.findMany({
+    where: { title: title },
+    select: { id: true },
+  });
+
   if (!artistExists) {
     const newArtist = await db.artist.create({
       data: {

@@ -17,8 +17,8 @@ import {
 import { toast } from "./ui/use-toast";
 
 const FormSchema = z.object({
-  title: z.string().min(1, "title is required").max(100),
-  artistName: z.string().min(1, "artist is required"),
+  title: z.string().min(1, "Title is required").max(100),
+  artistName: z.string().min(1, "Artist is required"),
 });
 
 const CreateSongForm = () => {
