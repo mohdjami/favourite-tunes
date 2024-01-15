@@ -30,24 +30,32 @@ export function AlbumArtwork({
   ...props
 }: AlbumArtworkProps) {
   return (
-    <div className={cn("space-y-3", className)} {...props}>
+    <div className={cn("space-y-3 ", className)} {...props}>
       <ContextMenu>
         <ContextMenuTrigger>
-          <Card className={cn("w-[380px]", className)} {...props}>
+          <Card className={cn("w-[1000px]  space-y-10", className)} {...props}>
             {" "}
-            <div className="overflow-hidden rounded-md">
-              <CardHeader>
-                {" "}
-                <CardTitle>{title}</CardTitle>
-              </CardHeader>
-              <CardFooter>
-                <div className="space-y-1 text-sm">
-                  <p className="text-xs text-muted-foreground">
-                    Artist: {artist}
-                  </p>
-                </div>
-              </CardFooter>
+            <CardHeader>
+              {" "}
+              <CardTitle className="text-sm">{title}</CardTitle>
+            </CardHeader>
+            <div className="flex flex-col items-center justify-center">
+              <Image
+                src="/yellow 500x500.jpg"
+                alt="album artwork"
+                width={300}
+                height={300}
+              />
             </div>
+            <CardFooter>
+              {" "}
+              <div className=" text-sm">
+                {" "}
+                <p className="text-xs text-muted-foreground">
+                  Artist: {artist}
+                </p>
+              </div>
+            </CardFooter>
           </Card>
         </ContextMenuTrigger>
       </ContextMenu>

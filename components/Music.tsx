@@ -95,7 +95,8 @@ export default function MusicPage() {
                       <Separator className="my-4" />
                       <div className="relative">
                         <ScrollArea>
-                          <div className="flex space-x-4 pb-4">
+                          <div className="flex  space-x-4 pb-4">
+                            {" "}
                             {songs.map((song) => (
                               <AlbumArtwork
                                 key={song.title}
