@@ -4,11 +4,11 @@ import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 
 const AdminPage = async () => {
-  const session = await getServerSession(authOptions);
+  // const session = await getServerSession(authOptions);
 
-  if (session?.user.role === "normal" || !session) {
-    redirect("/");
-  }
+  // if (session?.user.role === "normal" || !session) {
+  //   redirect("/");
+  // }
   return <Admin />;
 };
 

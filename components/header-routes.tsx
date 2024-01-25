@@ -51,14 +51,18 @@ const HeaderRoutes = async () => {
       href: "/#download",
       label: "Download",
     },
-  ];
-  const user = session?.user;
-  if (session?.user.role === "admin") {
-    loggedIn.push({
+    {
       href: "/admin",
       label: "Admin",
-    });
-  }
+    },
+  ];
+  const user = session?.user;
+  // if (session?.user.role === "admin") {
+  //   loggedIn.push({
+  //     href: "/admin",
+  //     label: "Admin",
+  //   });
+  // }
   const routes = user ? loggedIn : loggedOut;
   return (
     <>

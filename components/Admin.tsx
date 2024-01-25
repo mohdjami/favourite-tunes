@@ -20,6 +20,21 @@ import { Skeleton } from "./ui/skeleton";
 export default function Admin() {
   const [songs, setSongs] = useState<Song[]>([]);
   const [loading, isLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState("");
+  const handleSearch = async () => {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_APP_URL}/api/songs/search`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ searchTerm }),
+      }
+    );
+    const data = await res.json();
+    // setSongs(data.songs);
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -71,8 +86,10 @@ export default function Admin() {
                 <SearchIcon className="absolute left-2.5 top-2.5 h-4 w-4 text-gray-500 dark:text-gray-400" />
                 <Input
                   className="w-full bg-white shadow-none appearance-none pl-8 md:w-2/3 lg:w-1/3 dark:bg-gray-950"
-                  placeholder="Search songs..."
+                  placeholder="Search by Email..."
                   type="search"
+                  value={searchTerm}
+                  onChange={handleSearch}
                 />
               </div>
             </form>

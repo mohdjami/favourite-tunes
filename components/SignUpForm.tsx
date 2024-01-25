@@ -66,7 +66,8 @@ export function SignUpForm({ className, ...props }: SignUpFormProps) {
             title: "You are successfully logged in!",
           });
         }}
-        disabled={isGoogleLoading || isLoading}
+        // disabled={isGoogleLoading || isLoading}
+        disabled={true}
       >
         {isGoogleLoading ? (
           <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
